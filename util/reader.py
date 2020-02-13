@@ -78,10 +78,8 @@ class CFGReader:
         yield "[]"  # Yield a dummy block
 
     def get_block(self):
-        line_getter = self._get_line()
         obj = None
-        while True:
-            line = next(line_getter)
+        for line in self._get_line():
             if line.startswith('['):
                 line = line.strip('[').strip("]")
                 if obj:  # Yield previous block first
